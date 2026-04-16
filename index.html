@@ -32,7 +32,7 @@
                         serif: ['Cinzel', 'serif'], // Authoritative, sharp, professional
                     },
                     boxShadow: {
-                        'hard': '4px 4px 0px 0px rgba(28, 25, 23, 1)', // Brutalist/Sharp shadow, no soft touch
+                        'hard': '4px 4px 0px 0px rgba(28, 25, 23, 1)', // Brutalist/Sharp shadow
                     }
                 }
             }
@@ -40,10 +40,7 @@
     </script>
 
     <style>
-        /* Custom overrides to ensure "no soft touch" */
-        * {
-            border-radius: 0 !important; /* Strips all rounded corners */
-        }
+        * { border-radius: 0 !important; }
         
         .nav-link {
             position: relative;
@@ -77,15 +74,11 @@
             max-height: 400px;
         }
 
-        /* Sharp border accents */
-        .border-sharp {
-            border: 2px solid #1c1917;
-        }
+        .border-sharp { border: 2px solid #1c1917; }
 
-        /* YouTube Embed Container */
         .video-wrapper {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            padding-bottom: 56.25%; 
             height: 0;
             overflow: hidden;
             border: 2px solid #1c1917;
@@ -93,7 +86,7 @@
             background-color: #000;
         }
         .video-wrapper.shorts-ratio {
-            padding-bottom: 177.77%; /* 9:16 aspect ratio for shorts */
+            padding-bottom: 177.77%; 
         }
         .video-wrapper iframe {
             position: absolute;
@@ -101,6 +94,21 @@
             left: 0;
             width: 100%;
             height: 100%;
+        }
+
+        /* Profile Image Specific Styling */
+        .img-frame {
+            position: relative;
+            width: 100%;
+            max-width: 320px;
+            aspect-ratio: 4 / 5;
+            overflow: hidden;
+            border: 2px solid #1c1917;
+        }
+        .img-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .fade-in-section {
@@ -117,27 +125,6 @@
 </head>
 <body class="bg-base text-ink font-sans antialiased selection:bg-highlight selection:text-base">
 
-    <!-- Chosen Palette: Warm Neutrals (Base/Surface) with Deep Stone (Ink) and Rust (Highlight). Designed for a serious, high-tier educational feel. -->
-    
-    <!-- Application Structure Plan: 
-         1. Hero: Immediate value proposition and authoritative branding.
-         2. Philosophy & Data: Combines the 'About' section with a data visualization proving the "Value > Dopamine" thesis.
-         3. Portfolio: A structured, sharp grid of the 4 YouTube embeds, categorizing the work clearly.
-         4. Contact: Direct, no-nonsense call to action with contact details.
-         Rationale: This linear, bold structure removes friction, directly targets the requested "high-tier audience," and presents the user's thesis backed by both data (Chart.js) and proof (Videos).
-    -->
-
-    <!-- Visualization & Content Choices: 
-         - Data: Simulated Audience Retention (Educational vs. Trend-based).
-         - Goal: Compare the long-term value of the user's editing style vs. fast-paced dopamine editing.
-         - Method: Line Chart (Chart.js Canvas).
-         - Interaction: Hover tooltips for specific retention data points.
-         - Justification: Visually reinforces the user's unique selling proposition ("bringing high tier audience... for value").
-         - Library: Chart.js.
-    -->
-
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. Relying strictly on Unicode, Canvas, and CSS styling. -->
-
     <!-- Navigation -->
     <nav class="fixed w-full z-50 bg-base border-b-2 border-ink py-4 px-6 md:px-12 flex justify-between items-center mix-blend-multiply">
         <a href="#" class="font-serif font-bold text-xl tracking-widest uppercase">Diwash.</a>
@@ -146,8 +133,7 @@
             <a href="#work" class="nav-link">Selected Work</a>
             <a href="#contact" class="nav-link">Contact</a>
         </div>
-        <!-- Mobile Menu Placeholder (Unicode icon) -->
-        <div class="md:hidden text-2xl cursor-pointer" onclick="alert('Navigation: Scroll down to view sections.')">&#9776;</div>
+        <div class="md:hidden text-2xl cursor-pointer" onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'})">&#9776;</div>
     </nav>
 
     <!-- Hero Section -->
@@ -182,11 +168,13 @@
         <div class="max-w-6xl mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 
-                <!-- Profile Image Area -->
+                <!-- Profile Image Area Integrated with IMG_0309.jpg -->
                 <div class="lg:col-span-4 relative group">
                     <div class="absolute inset-0 bg-highlight translate-x-3 translate-y-3 border-2 border-ink"></div>
-                    <img src="IMG_0309.jpg" alt="Diwash Bhattarai" class="relative z-10 w-full h-auto object-cover border-sharp grayscale contrast-125 transition-all duration-500 group-hover:grayscale-0">
-                    <div class="mt-6">
+                    <div class="img-frame z-10 relative">
+                        <img src="IMG_0309.jpg" alt="Diwash Bhattarai" class="grayscale contrast-125 transition-all duration-500 group-hover:grayscale-0">
+                    </div>
+                    <div class="mt-8">
                         <h2 class="font-serif text-2xl font-bold uppercase">Diwash Bhattarai</h2>
                         <p class="text-sm font-bold tracking-widest uppercase text-highlight mt-1">Lead Editor & Strategist</p>
                     </div>
@@ -208,7 +196,7 @@
                         <div class="chart-container">
                             <canvas id="retentionChart"></canvas>
                         </div>
-                        <p class="text-sm mt-4 italic text-ink/80 text-center">Data represents average audience retention curves for business content (Value-driven pacing vs. Hyper-stimulated pacing).</p>
+                        <p class="text-sm mt-4 italic text-ink/80 text-center">Data represents average audience retention curves for business content.</p>
                     </div>
                 </div>
             </div>
@@ -224,62 +212,50 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                
-                <!-- Video 1: Showreel -->
                 <div class="group">
                     <div class="flex justify-between items-center mb-3">
                         <h4 class="font-bold uppercase tracking-wider">01. The Showreel</h4>
                         <span class="text-xs font-bold px-2 py-1 bg-ink text-base">Overview</span>
                     </div>
                     <div class="video-wrapper">
-                        <!-- Converted to standard embed URL -->
-                        <iframe src="https://www.youtube.com/embed/KLVMldaa4n8?modestbranding=1&rel=0" title="Video Showreel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/KLVMldaa4n8?modestbranding=1&rel=0" title="Video Showreel" frameborder="0" allowfullscreen></iframe>
                     </div>
-                    <p class="mt-4 text-sm font-light">A comprehensive look at pacing, color grading, and narrative structure for premium clients.</p>
+                    <p class="mt-4 text-sm font-light">Comprehensive look at pacing and structure for premium clients.</p>
                 </div>
 
-                <!-- Video 2: Podcast Trailer -->
                 <div class="group">
                     <div class="flex justify-between items-center mb-3">
                         <h4 class="font-bold uppercase tracking-wider">02. Podcast Trailer</h4>
                         <span class="text-xs font-bold px-2 py-1 border-sharp text-ink">Long-Form Promo</span>
                     </div>
                     <div class="video-wrapper">
-                        <!-- Converted to standard embed URL -->
-                        <iframe src="https://www.youtube.com/embed/Z0GmUvLwrXs?modestbranding=1&rel=0" title="Podcast Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/Z0GmUvLwrXs?modestbranding=1&rel=0" title="Podcast Trailer" frameborder="0" allowfullscreen></iframe>
                     </div>
-                    <p class="mt-4 text-sm font-light">Editing that builds tension and highlights the core value of an hour-long conversation in seconds.</p>
+                    <p class="mt-4 text-sm font-light">Editing that builds tension and highlights core conversational value.</p>
                 </div>
-
             </div>
 
             <!-- Shorts Row -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12 pt-12 border-t border-ink/20">
-                
-                <!-- Video 3: Shortform -->
                 <div class="group flex flex-col items-center">
-                    <div class="w-full flex justify-between items-center mb-3 max-w-[350px]">
+                    <div class="w-full flex justify-between items-center mb-3 max-w-[320px]">
                         <h4 class="font-bold uppercase tracking-wider">03. Shortform</h4>
                         <span class="text-xs font-bold px-2 py-1 border-sharp text-ink">Vertical</span>
                     </div>
-                    <div class="video-wrapper shorts-ratio w-full max-w-[350px]">
-                        <iframe src="https://www.youtube.com/embed/6D7zAuEopb8?modestbranding=1&rel=0" title="Shortform Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <div class="video-wrapper shorts-ratio w-full max-w-[320px]">
+                        <iframe src="https://www.youtube.com/embed/6D7zAuEopb8?modestbranding=1&rel=0" title="Shortform Video" frameborder="0" allowfullscreen></iframe>
                     </div>
-                    <p class="mt-4 text-sm font-light w-full max-w-[350px]">High-retention vertical content that doesn't compromise educational integrity for cheap views.</p>
                 </div>
 
-                <!-- Video 4: Clipping -->
                 <div class="group flex flex-col items-center">
-                    <div class="w-full flex justify-between items-center mb-3 max-w-[350px]">
+                    <div class="w-full flex justify-between items-center mb-3 max-w-[320px]">
                         <h4 class="font-bold uppercase tracking-wider">04. Micro-Clipping</h4>
                         <span class="text-xs font-bold px-2 py-1 border-sharp text-ink">Vertical</span>
                     </div>
-                    <div class="video-wrapper shorts-ratio w-full max-w-[350px]">
-                        <iframe src="https://www.youtube.com/embed/0j1mDr40fBU?modestbranding=1&rel=0" title="Video Clipping" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <div class="video-wrapper shorts-ratio w-full max-w-[320px]">
+                        <iframe src="https://www.youtube.com/embed/0j1mDr40fBU?modestbranding=1&rel=0" title="Video Clipping" frameborder="0" allowfullscreen></iframe>
                     </div>
-                    <p class="mt-4 text-sm font-light w-full max-w-[350px]">Extracting the absolute best, most valuable moments from dense business content.</p>
                 </div>
-
             </div>
         </div>
     </section>
@@ -288,145 +264,69 @@
     <section id="contact" class="py-24 px-6 md:px-12 bg-ink text-base fade-in-section">
         <div class="max-w-4xl mx-auto text-center">
             <h2 class="font-serif text-5xl md:text-7xl font-bold uppercase mb-8">Ready to Elevate?</h2>
-            <p class="text-xl font-light mb-12 max-w-2xl mx-auto text-base/80">
-                Stop losing your high-tier audience to chaotic editing. Let's build a content library that establishes authority.
-            </p>
-            
             <div class="flex flex-col md:flex-row justify-center gap-6 mb-12">
                 <a href="mailto:onboardnomad@gmail.com" class="inline-flex items-center justify-center px-8 py-4 bg-base text-ink font-bold uppercase tracking-widest hover:bg-highlight hover:text-base transition-colors border-2 border-transparent">
-                    &#9993; onboardnomad@gmail.com
+                    onboardnomad@gmail.com
                 </a>
                 <a href="tel:+919242514015" class="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-base text-base font-bold uppercase tracking-widest hover:bg-base hover:text-ink transition-colors">
-                    &#9906; +91 9242514015
+                    +91 9242514015
                 </a>
             </div>
-            
             <p class="text-xs font-bold uppercase tracking-widest text-base/50 mt-16">
-                &copy; 2026 Diwash Bhattarai. All Rights Reserved. Hosted on GitHub.
+                &copy; 2026 Diwash Bhattarai. Hosted on GitHub.
             </p>
         </div>
     </section>
 
-    <!-- JavaScript for Interactions and Chart -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            
-            // --- 1. Initialize Chart.js ---
             const ctx = document.getElementById('retentionChart').getContext('2d');
-            
-            // Data reflecting the "Value vs Dopamine" philosophy
             const chartData = {
-                labels: ['0:00', '1:00', '3:00', '5:00', '10:00', '15:00', 'End'],
+                labels: ['0:00', '1:00', '3:00', '5:00', '10:00', 'End'],
                 datasets: [
                     {
-                        label: 'Value-Driven Editing (My Approach)',
-                        data: [100, 85, 75, 70, 65, 60, 55], // Steady retention
-                        borderColor: '#1c1917', // ink color
-                        backgroundColor: 'rgba(28, 25, 23, 0.1)',
+                        label: 'Value-Driven',
+                        data: [100, 85, 75, 70, 65, 55],
+                        borderColor: '#1c1917',
                         borderWidth: 3,
-                        pointBackgroundColor: '#1c1917',
-                        pointBorderColor: '#f4f4f0',
-                        pointRadius: 5,
-                        pointHoverRadius: 8,
-                        fill: true,
+                        pointRadius: 4,
+                        fill: false,
                         tension: 0.3
                     },
                     {
-                        label: 'Dopamine-Driven (Fast/Chaotic)',
-                        data: [100, 60, 40, 25, 15, 10, 5], // Fast drop-off
-                        borderColor: '#b45309', // highlight color
+                        label: 'Dopamine-Driven',
+                        data: [100, 60, 40, 25, 15, 5],
+                        borderColor: '#b45309',
                         borderWidth: 2,
-                        borderDash: [5, 5], // Dashed line for contrast
-                        pointBackgroundColor: '#b45309',
-                        pointRadius: 4,
+                        borderDash: [5, 5],
+                        pointRadius: 0,
                         fill: false,
                         tension: 0.1
                     }
                 ]
             };
 
-            const chartOptions = {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'top',
-                        labels: {
-                            font: {
-                                family: "'Inter', sans-serif",
-                                weight: 'bold'
-                            },
-                            color: '#1c1917',
-                            usePointStyle: true,
-                            padding: 20
-                        }
-                    },
-                    tooltip: {
-                        backgroundColor: '#1c1917',
-                        titleFont: { family: "'Inter', sans-serif", size: 14 },
-                        bodyFont: { family: "'Inter', sans-serif", size: 13 },
-                        padding: 12,
-                        cornerRadius: 0, // Keeping the sharp/no soft touch theme
-                        displayColors: true
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        max: 100,
-                        title: {
-                            display: true,
-                            text: 'Retention %',
-                            color: '#1c1917',
-                            font: { family: "'Cinzel', serif", weight: 'bold' }
-                        },
-                        grid: { color: 'rgba(28, 25, 23, 0.1)' },
-                        ticks: { color: '#1c1917' }
-                    },
-                    x: {
-                        title: {
-                            display: true,
-                            text: 'Video Duration',
-                            color: '#1c1917',
-                            font: { family: "'Cinzel', serif", weight: 'bold' }
-                        },
-                        grid: { display: false },
-                        ticks: { color: '#1c1917' }
-                    }
-                }
-            };
-
             new Chart(ctx, {
                 type: 'line',
                 data: chartData,
-                options: chartOptions
-            });
-
-            // --- 2. Scroll Animation (Fade In) ---
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.15
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target); // Run once
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { beginAtZero: true, max: 100, ticks: { display: false }, grid: { display: false } },
+                        x: { grid: { display: false } }
                     }
-                });
-            }, observerOptions);
-
-            document.querySelectorAll('.fade-in-section').forEach((section) => {
-                observer.observe(section);
+                }
             });
-            
-            // Immediately show first section to prevent blank screen
-            setTimeout(() => {
-                const firstSection = document.querySelector('.fade-in-section');
-                if(firstSection) firstSection.classList.add('is-visible');
-            }, 100);
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('is-visible');
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in-section').forEach((s) => observer.observe(s));
         });
     </script>
 </body>
