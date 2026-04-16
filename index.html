@@ -1,433 +1,340 @@
- <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diwash Bhattarai | Professional Video Editor</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Chart.js for data visualization -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diwash Bhattarai | The Toyota of Education Editing</title>
+    <link href="[https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap)" rel="stylesheet">
+    <style>
+        /* CSS DESIGN SYSTEM: BASED ON HARVARD BUSINESS REVIEW & MASTERCLASS */
+        :root {
+            --hbs-crimson: #A41034; /* Official HBS Crimson for links and CTAs [1, 3] */
+            --black: #1a1a1a;
+            --white: #ffffff;
+            --gray-bg: #f9f9f9;
+            --gray-border: #eeeeee;
+            --gray-text: #555555;
+            --grid-unit: 8px; /* Standardized 8pt Grid System [1] */
+        }
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <!-- Tailwind Configuration & Custom Styles -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        base: '#f4f4f0',       // Warm, calm neutral background
-                        surface: '#ebebdc',    // Slightly darker for contrast areas
-                        ink: '#1c1917',        // Deep stone for sharp text
-                        highlight: '#b45309',  // Amber/Rust accent for subtle emphasis
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Cinzel', 'serif'], // Authoritative, sharp, professional
-                    },
-                    boxShadow: {
-                        'hard': '4px 4px 0px 0px rgba(28, 25, 23, 1)', // Brutalist/Sharp shadow, no soft touch
-                    }
-                }
-            }
-        }
-    </script>
+        body {
+            font-family: 'Inter', Arial, sans-serif; /* Clean sans-serif [6] */
+            line-height: 1.6;
+            color: var(--black);
+            background-color: var(--white);
+            -webkit-font-smoothing: antialiased;
+        }
 
-    <style>
-        /* Custom overrides to ensure "no soft touch" */
-        * {
-            border-radius: 0 !important; /* Strips all rounded corners */
-        }
-        
-        .nav-link {
-            position: relative;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            transform: scaleX(0);
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: #1c1917;
-            transform-origin: bottom right;
-            transition: transform 0.25s ease-out;
-        }
-        .nav-link:hover::after {
-            transform: scaleX(1);
-            transform-origin: bottom left;
-        }
+       .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 calc(var(--grid-unit) * 4);
+        }
 
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 350px;
-            max-height: 400px;
-        }
+        /* NAVIGATION: PROTOTYPICAL B2B LAYOUT [4] */
+        nav {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--gray-border);
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            z-index: 1000;
+        }
 
-        /* Sharp border accents */
-        .border-sharp {
-            border: 2px solid #1c1917;
-        }
+       .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
 
-        /* YouTube Embed Container */
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
-            height: 0;
-            overflow: hidden;
-            border: 2px solid #1c1917;
-            box-shadow: 4px 4px 0px 0px rgba(28, 25, 23, 1);
-            background-color: #000;
-        }
-        .video-wrapper.shorts-ratio {
-            padding-bottom: 177.77%; /* 9:16 aspect ratio for shorts */
-        }
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
+       .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+        }
 
-        .fade-in-section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-            will-change: opacity, visibility;
-        }
-        .fade-in-section.is-visible {
-            opacity: 1;
-            transform: none;
-        }
-    </style>
+       .nav-links a {
+            text-decoration: none;
+            color: var(--black);
+            margin-left: calc(var(--grid-unit) * 4);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+       .nav-links a:hover {
+            color: var(--hbs-crimson);
+        }
+
+        /* HERO SECTION: THE "ADULT IN THE ROOM" NARRATIVE [7] */
+       .hero {
+            padding: calc(var(--grid-unit) * 12) 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: calc(var(--grid-unit) * 8);
+            align-items: center;
+        }
+
+       .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: calc(var(--grid-unit) * 3);
+            font-weight: 700;
+        }
+
+       .hero-text p {
+            font-size: 1.25rem;
+            color: var(--gray-text);
+            margin-bottom: calc(var(--grid-unit) * 5);
+        }
+
+       .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+       .cta-btn {
+            background-color: var(--hbs-crimson);
+            color: white;
+            padding: 16px 32px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            border-radius: 2px;
+            transition: transform 0.2s;
+        }
+
+       .cta-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* PORTFOLIO: THE ECOSYSTEM [5, 8] */
+       .portfolio {
+            padding: calc(var(--grid-unit) * 12) 0;
+            background-color: var(--gray-bg);
+        }
+
+       .section-header {
+            text-align: center;
+            margin-bottom: calc(var(--grid-unit) * 8);
+        }
+
+       .section-header h2 {
+            font-size: 2.25rem;
+            margin-bottom: calc(var(--grid-unit) * 2);
+        }
+
+       .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: calc(var(--grid-unit) * 4);
+        }
+
+       .video-card {
+            background: white;
+            padding: calc(var(--grid-unit) * 3);
+            border-radius: 4px;
+            border: 1px solid var(--gray-border);
+        }
+
+       .iframe-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            margin-bottom: calc(var(--grid-unit) * 2);
+        }
+
+       .iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 2px;
+        }
+
+       .video-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+
+       .video-card p {
+            font-size: 0.9rem;
+            color: var(--gray-text);
+        }
+
+        /* WORKFLOW: TOYOTA PRINCIPLES [9, 10] */
+       .workflow {
+            padding: calc(var(--grid-unit) * 12) 0;
+        }
+
+       .workflow-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: calc(var(--grid-unit) * 6);
+        }
+
+       .workflow-item {
+            padding-top: calc(var(--grid-unit) * 4);
+            border-top: 4px solid var(--hbs-crimson);
+        }
+
+       .workflow-item h4 {
+            font-size: 1.25rem;
+            margin-bottom: calc(var(--grid-unit) * 2);
+        }
+
+        /* FOOTER: CONTACT & TRUST [7, 11] */
+        footer {
+            padding: calc(var(--grid-unit) * 10) 0;
+            background: var(--black);
+            color: white;
+            text-align: center;
+        }
+
+       .footer-content h2 {
+            font-size: 2rem;
+            margin-bottom: calc(var(--grid-unit) * 4);
+        }
+
+       .contact-details {
+            margin-bottom: calc(var(--grid-unit) * 4);
+        }
+
+       .contact-details a {
+            color: white;
+            text-decoration: underline;
+            margin: 0 15px;
+            font-weight: 600;
+        }
+
+       .copyright {
+            font-size: 0.8rem;
+            opacity: 0.6;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+           .hero { grid-template-columns: 1fr; text-align: center; }
+           .hero-text h1 { font-size: 2.5rem; }
+           .workflow-grid { grid-template-columns: 1fr; }
+           .video-grid { grid-template-columns: 1fr; }
+           .nav-links { display: none; }
+        }
+    </style>
 </head>
-<body class="bg-base text-ink font-sans antialiased selection:bg-highlight selection:text-base">
+<body>
 
-    <!-- Chosen Palette: Warm Neutrals (Base/Surface) with Deep Stone (Ink) and Rust (Highlight). Designed for a serious, high-tier educational feel. -->
-    
-    <!-- Application Structure Plan: 
-         1. Hero: Immediate value proposition and authoritative branding.
-         2. Philosophy & Data: Combines the 'About' section with a data visualization proving the "Value > Dopamine" thesis.
-         3. Portfolio: A structured, sharp grid of the 4 YouTube embeds, categorizing the work clearly.
-         4. Contact: Direct, no-nonsense call to action with contact details.
-         Rationale: This linear, bold structure removes friction, directly targets the requested "high-tier audience," and presents the user's thesis backed by both data (Chart.js) and proof (Videos).
-    -->
+    <nav>
+        <div class="container nav-content">
+            <div class="logo">Diwash Bhattarai</div>
+            <div class="nav-links">
+                <a href="#portfolio">The Ecosystem</a>
+                <a href="#workflow">The Toyota Workflow</a>
+                <a href="mailto:onboardnomad@gmail.com">Contact</a>
+            </div>
+        </div>
+    </nav>
 
-    <!-- Visualization & Content Choices: 
-         - Data: Simulated Audience Retention (Educational vs. Trend-based).
-         - Goal: Compare the long-term value of the user's editing style vs. fast-paced dopamine editing.
-         - Method: Line Chart (Chart.js Canvas).
-         - Interaction: Hover tooltips for specific retention data points.
-         - Justification: Visually reinforces the user's unique selling proposition ("bringing high tier audience... for value").
-         - Library: Chart.js.
-    -->
+    <main>
+        <section class="container hero">
+            <div class="hero-text">
+                <h1>Editing for Authority, Not Just Attention.</h1>
+                <p>Strategic Video Architecture for High-Tier Education. Rejecting "Dopamine-driven" noise in favor of Industrial Reliability and Information Architecture.</p>
+                <a href="mailto:onboardnomad@gmail.com" class="cta-btn">Engineer Your Content</a>
+            </div>
+            <div class="hero-image">
+                <img src="profile.jpg" alt="Diwash Bhattarai - Professional Video Architect">
+            </div>
+        </section>
 
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. Relying strictly on Unicode, Canvas, and CSS styling. -->
+        <section id="portfolio" class="portfolio">
+            <div class="container">
+                <div class="section-header">
+                    <h2>The Content Ecosystem</h2>
+                    <p>Strategic distribution assets for serious creators.</p>
+                </div>
+                
+                <div class="video-grid">
+                    <div class="video-card">
+                        <div class="iframe-container">
+                            <iframe src="[https://www.youtube.com/embed/Z0GmUvLwrXs](https://www.youtube.com/embed/Z0GmUvLwrXs)" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <h3>Podcast Trailer</h3>
+                        <p>High-intent hook development focused on educational utility.</p>
+                    </div>
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-base border-b-2 border-ink py-4 px-6 md:px-12 flex justify-between items-center mix-blend-multiply">
-        <a href="#" class="font-serif font-bold text-xl tracking-widest uppercase">Diwash.</a>
-        <div class="hidden md:flex gap-8 font-semibold text-sm tracking-wider uppercase">
-            <a href="#philosophy" class="nav-link">Philosophy</a>
-            <a href="#work" class="nav-link">Selected Work</a>
-            <a href="#contact" class="nav-link">Contact</a>
-        </div>
-        <!-- Mobile Menu Placeholder (Unicode icon) -->
-        <div class="md:hidden text-2xl cursor-pointer" onclick="alert('Navigation: Scroll down to view sections.')">&#9776;</div>
-    </nav>
+                    <div class="video-card">
+                        <div class="iframe-container">
+                            <iframe src="[https://www.youtube.com/embed/KLVMldaa4n8](https://www.youtube.com/embed/KLVMldaa4n8)" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <h3>Industrial Showreel</h3>
+                        <p>Systematic overview of 200+ videos delivered for 50+ clients.</p>
+                    </div>
 
-    <!-- Hero Section -->
-    <header class="pt-32 pb-20 px-6 md:px-12 min-h-[90vh] flex flex-col justify-center border-b-2 border-ink">
-        <div class="max-w-6xl mx-auto w-full">
-            <p class="text-highlight font-bold tracking-widest uppercase mb-4 text-sm md:text-base">&#9632; Video Editor for Educators & Enterprises</p>
-            <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl leading-none font-bold uppercase mb-8">
-                Value <br>
-                <span class="text-transparent" style="-webkit-text-stroke: 2px #1c1917;">Over</span> <br>
-                Dopamine.
-            </h1>
-            <div class="flex flex-col md:flex-row gap-8 items-start md:items-end justify-between border-t-2 border-ink pt-8 mt-12">
-                <p class="max-w-xl text-lg md:text-xl font-light leading-relaxed">
-                    I partner with business and educational content creators to build high-tier audiences. If you want cheap clicks, look elsewhere. If you want profound engagement and authority, you're in the right place.
-                </p>
-                <div class="flex gap-4 shrink-0">
-                    <div class="text-center px-6 py-4 border-sharp bg-surface shadow-hard">
-                        <span class="block font-serif text-3xl font-bold">50+</span>
-                        <span class="text-xs font-bold uppercase tracking-wider">Clients</span>
-                    </div>
-                    <div class="text-center px-6 py-4 border-sharp bg-surface shadow-hard">
-                        <span class="block font-serif text-3xl font-bold">200+</span>
-                        <span class="text-xs font-bold uppercase tracking-wider">Videos Edited</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+                    <div class="video-card">
+                        <div class="iframe-container">
+                            <iframe src="[https://www.youtube.com/embed/6D7zAuEopb8](https://www.youtube.com/embed/6D7zAuEopb8)" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <h3>Short-form Micro-Lessons</h3>
+                        <p>Retention-driven vertical content for mobile-first authority.</p>
+                    </div>
 
-    <!-- Philosophy & Data Section -->
-    <section id="philosophy" class="py-20 px-6 md:px-12 border-b-2 border-ink bg-surface fade-in-section">
-        <div class="max-w-6xl mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                
-                <!-- Profile Image Area -->
-                <div class="lg:col-span-4 relative group">
-                    <div class="absolute inset-0 bg-highlight translate-x-3 translate-y-3 border-2 border-ink"></div>
-                    <img src="IMG_0309.jpg" alt="Diwash Bhattarai" class="relative z-10 w-full h-auto object-cover border-sharp grayscale contrast-125 transition-all duration-500 group-hover:grayscale-0">
-                    <div class="mt-6">
-                        <h2 class="font-serif text-2xl font-bold uppercase">Diwash Bhattarai</h2>
-                        <p class="text-sm font-bold tracking-widest uppercase text-highlight mt-1">Lead Editor & Strategist</p>
-                    </div>
-                </div>
+                    <div class="video-card">
+                        <div class="iframe-container">
+                            <iframe src="[https://www.youtube.com/embed/0j1mDr40fBU](https://www.youtube.com/embed/0j1mDr40fBU)" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <h3>Strategic Clipping</h3>
+                        <p>Repurposing long-form assets into high-value distribution funnels.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                <!-- Text & Data Area -->
-                <div class="lg:col-span-8 space-y-8">
-                    <div>
-                        <h3 class="font-serif text-3xl md:text-4xl font-bold uppercase mb-4">The Metric that Matters: Retention</h3>
-                        <p class="text-lg leading-relaxed font-light mb-6">
-                            My editing philosophy is built for high-tier audiences. Fast cuts, heavy sound effects, and constant motion might spike initial engagement, but they exhaust an educated viewer. 
-                            I edit to enhance the underlying message, structuring pacing to keep the viewer focused on the <strong class="font-semibold">substance</strong>.
-                        </p>
-                    </div>
-                    
-                    <!-- Data Visualization -->
-                    <div class="border-sharp bg-base p-6 shadow-hard">
-                        <p class="text-xs font-bold uppercase tracking-widest mb-4 border-b border-ink pb-2">&#9650; Audience Retention Comparison (Avg.)</p>
-                        <div class="chart-container">
-                            <canvas id="retentionChart"></canvas>
-                        </div>
-                        <p class="text-sm mt-4 italic text-ink/80 text-center">Data represents average audience retention curves for business content (Value-driven pacing vs. Hyper-stimulated pacing).</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        <section id="workflow" class="container workflow">
+            <div class="section-header">
+                <h2>The Toyota Reliability Framework</h2>
+                <p>Industrializing the creative process for 100% deadline adherence.</p>
+            </div>
+            <div class="workflow-grid">
+                <div class="workflow-item">
+                    <h4>01. Narrative Pruning</h4>
+                    <p>Eliminating "muda" (waste). We remove fluff to highlight domain expertise and reduce extraneous cognitive load.[5]</p>
+                </div>
+                <div class="workflow-item">
+                    <h4>02. Jidoka Quality</h4>
+                    <p>Building quality into the timeline. Automated error detection ensures zero-defect delivery for high-stakes B2B narratives.[9]</p>
+                </div>
+                <div class="workflow-item">
+                    <h4>03. Heijunka Leveling</h4>
+                    <p>Production leveling for consistent output. Systematic version control and file management for industrial-grade results.[10, 12]</p>
+                </div>
+            </div>
+        </section>
+    </main>
 
-    <!-- Portfolio Section -->
-    <section id="work" class="py-20 px-6 md:px-12 border-b-2 border-ink fade-in-section">
-        <div class="max-w-6xl mx-auto">
-            <div class="flex justify-between items-end mb-12 border-b-2 border-ink pb-6">
-                <h2 class="font-serif text-4xl md:text-5xl font-bold uppercase">Selected Work</h2>
-                <a href="#contact" class="hidden md:inline-block font-bold text-sm tracking-widest uppercase hover:text-highlight transition-colors">Start a Project &#8594;</a>
-            </div>
+    <footer>
+        <div class="container footer-content">
+            <h2>Ready to Engineer Your Authority?</h2>
+            <div class="contact-details">
+                <a href="mailto:onboardnomad@gmail.com">onboardnomad@gmail.com</a>
+                <a href="tel:+919242514015">+91 9242514015</a>
+            </div>
+            <p class="copyright">&copy; 2026 Diwash Bhattarai | The Toyota of Education Editing</p>
+        </div>
+    </footer>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                
-                <!-- Video 1: Showreel -->
-                <div class="group">
-                    <div class="flex justify-between items-center mb-3">
-                        <h4 class="font-bold uppercase tracking-wider">01. The Showreel</h4>
-                        <span class="text-xs font-bold px-2 py-1 bg-ink text-base">Overview</span>
-                    </div>
-                    <div class="video-wrapper">
-                        <!-- Converted to standard embed URL -->
-                        <iframe src="https://www.youtube.com/embed/KLVMldaa4n8?modestbranding=1&rel=0" title="Video Showreel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                    <p class="mt-4 text-sm font-light">A comprehensive look at pacing, color grading, and narrative structure for premium clients.</p>
-                </div>
-
-                <!-- Video 2: Podcast Trailer -->
-                <div class="group">
-                    <div class="flex justify-between items-center mb-3">
-                        <h4 class="font-bold uppercase tracking-wider">02. Podcast Trailer</h4>
-                        <span class="text-xs font-bold px-2 py-1 border-sharp text-ink">Long-Form Promo</span>
-                    </div>
-                    <div class="video-wrapper">
-                        <!-- Converted to standard embed URL -->
-                        <iframe src="https://www.youtube.com/embed/Z0GmUvLwrXs?modestbranding=1&rel=0" title="Podcast Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                    <p class="mt-4 text-sm font-light">Editing that builds tension and highlights the core value of an hour-long conversation in seconds.</p>
-                </div>
-
-            </div>
-
-            <!-- Shorts Row -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12 pt-12 border-t border-ink/20">
-                
-                <!-- Video 3: Shortform -->
-                <div class="group flex flex-col items-center">
-                    <div class="w-full flex justify-between items-center mb-3 max-w-[350px]">
-                        <h4 class="font-bold uppercase tracking-wider">03. Shortform</h4>
-                        <span class="text-xs font-bold px-2 py-1 border-sharp text-ink">Vertical</span>
-                    </div>
-                    <div class="video-wrapper shorts-ratio w-full max-w-[350px]">
-                        <iframe src="https://www.youtube.com/embed/6D7zAuEopb8?modestbranding=1&rel=0" title="Shortform Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                    <p class="mt-4 text-sm font-light w-full max-w-[350px]">High-retention vertical content that doesn't compromise educational integrity for cheap views.</p>
-                </div>
-
-                <!-- Video 4: Clipping -->
-                <div class="group flex flex-col items-center">
-                    <div class="w-full flex justify-between items-center mb-3 max-w-[350px]">
-                        <h4 class="font-bold uppercase tracking-wider">04. Micro-Clipping</h4>
-                        <span class="text-xs font-bold px-2 py-1 border-sharp text-ink">Vertical</span>
-                    </div>
-                    <div class="video-wrapper shorts-ratio w-full max-w-[350px]">
-                        <iframe src="https://www.youtube.com/embed/0j1mDr40fBU?modestbranding=1&rel=0" title="Video Clipping" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                    <p class="mt-4 text-sm font-light w-full max-w-[350px]">Extracting the absolute best, most valuable moments from dense business content.</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 px-6 md:px-12 bg-ink text-base fade-in-section">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="font-serif text-5xl md:text-7xl font-bold uppercase mb-8">Ready to Elevate?</h2>
-            <p class="text-xl font-light mb-12 max-w-2xl mx-auto text-base/80">
-                Stop losing your high-tier audience to chaotic editing. Let's build a content library that establishes authority.
-            </p>
-            
-            <div class="flex flex-col md:flex-row justify-center gap-6 mb-12">
-                <a href="mailto:onboardnomad@gmail.com" class="inline-flex items-center justify-center px-8 py-4 bg-base text-ink font-bold uppercase tracking-widest hover:bg-highlight hover:text-base transition-colors border-2 border-transparent">
-                    &#9993; onboardnomad@gmail.com
-                </a>
-                <a href="tel:+919242514015" class="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-base text-base font-bold uppercase tracking-widest hover:bg-base hover:text-ink transition-colors">
-                    &#9906; +91 9242514015
-                </a>
-            </div>
-            
-            <p class="text-xs font-bold uppercase tracking-widest text-base/50 mt-16">
-                &copy; 2026 Diwash Bhattarai. All Rights Reserved. Hosted on GitHub.
-            </p>
-        </div>
-    </section>
-
-    <!-- JavaScript for Interactions and Chart -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            
-            // --- 1. Initialize Chart.js ---
-            const ctx = document.getElementById('retentionChart').getContext('2d');
-            
-            // Data reflecting the "Value vs Dopamine" philosophy
-            const chartData = {
-                labels: ['0:00', '1:00', '3:00', '5:00', '10:00', '15:00', 'End'],
-                datasets: [
-                    {
-                        label: 'Value-Driven Editing (My Approach)',
-                        data: [100, 85, 75, 70, 65, 60, 55], // Steady retention
-                        borderColor: '#1c1917', // ink color
-                        backgroundColor: 'rgba(28, 25, 23, 0.1)',
-                        borderWidth: 3,
-                        pointBackgroundColor: '#1c1917',
-                        pointBorderColor: '#f4f4f0',
-                        pointRadius: 5,
-                        pointHoverRadius: 8,
-                        fill: true,
-                        tension: 0.3
-                    },
-                    {
-                        label: 'Dopamine-Driven (Fast/Chaotic)',
-                        data: [100, 60, 40, 25, 15, 10, 5], // Fast drop-off
-                        borderColor: '#b45309', // highlight color
-                        borderWidth: 2,
-                        borderDash: [5, 5], // Dashed line for contrast
-                        pointBackgroundColor: '#b45309',
-                        pointRadius: 4,
-                        fill: false,
-                        tension: 0.1
-                    }
-                ]
-            };
-
-            const chartOptions = {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'top',
-                        labels: {
-                            font: {
-                                family: "'Inter', sans-serif",
-                                weight: 'bold'
-                            },
-                            color: '#1c1917',
-                            usePointStyle: true,
-                            padding: 20
-                        }
-                    },
-                    tooltip: {
-                        backgroundColor: '#1c1917',
-                        titleFont: { family: "'Inter', sans-serif", size: 14 },
-                        bodyFont: { family: "'Inter', sans-serif", size: 13 },
-                        padding: 12,
-                        cornerRadius: 0, // Keeping the sharp/no soft touch theme
-                        displayColors: true
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        max: 100,
-                        title: {
-                            display: true,
-                            text: 'Retention %',
-                            color: '#1c1917',
-                            font: { family: "'Cinzel', serif", weight: 'bold' }
-                        },
-                        grid: { color: 'rgba(28, 25, 23, 0.1)' },
-                        ticks: { color: '#1c1917' }
-                    },
-                    x: {
-                        title: {
-                            display: true,
-                            text: 'Video Duration',
-                            color: '#1c1917',
-                            font: { family: "'Cinzel', serif", weight: 'bold' }
-                        },
-                        grid: { display: false },
-                        ticks: { color: '#1c1917' }
-                    }
-                }
-            };
-
-            new Chart(ctx, {
-                type: 'line',
-                data: chartData,
-                options: chartOptions
-            });
-
-            // --- 2. Scroll Animation (Fade In) ---
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.15
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target); // Run once
-                    }
-                });
-            }, observerOptions);
-
-            document.querySelectorAll('.fade-in-section').forEach((section) => {
-                observer.observe(section);
-            });
-            
-            // Immediately show first section to prevent blank screen
-            setTimeout(() => {
-                const firstSection = document.querySelector('.fade-in-section');
-                if(firstSection) firstSection.classList.add('is-visible');
-            }, 100);
-        });
-    </script>
 </body>
 </html>
