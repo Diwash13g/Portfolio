@@ -1,197 +1,299 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diwash Bhattarai | Post-Production Director</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        display: ['Syne', 'sans-serif'],
-                    },
-                    colors: {
-                        darkBg: '#0B0B0B',
-                        surface: '#121212',
-                        surfaceMuted: '#1A1A1A',
-                        accent: '#FFFFFF',
-                        grayText: '#A0A0A0'
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        body {
-            background-color: #0B0B0B;
-            color: #FFFFFF;
-            -webkit-font-smoothing: antialiased;
-        }
-        .video-glow:hover {
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DiwashVFX | Short Form Video Editor</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+font-family:'Inter',sans-serif;
+background:#070707;
+color:#fff;
+line-height:1.6;
+}
+.container{width:min(1200px,92%);margin:auto}
+nav{
+position:sticky;top:0;z-index:1000;
+backdrop-filter:blur(12px);
+background:rgba(7,7,7,.8);
+border-bottom:1px solid rgba(255,255,255,.08);
+}
+.nav-wrap{
+display:flex;justify-content:space-between;align-items:center;
+padding:18px 0;
+}
+.logo{font-size:1.5rem;font-weight:800}
+.logo span{color:#8b5cf6}
+.nav-links a{
+color:#ddd;text-decoration:none;margin-left:24px
+}
+.hero{
+padding:90px 0;
+display:grid;
+grid-template-columns:1.2fr .8fr;
+gap:60px;
+align-items:center;
+}
+.badge{
+display:inline-block;
+padding:8px 14px;
+background:rgba(139,92,246,.15);
+border:1px solid rgba(139,92,246,.35);
+border-radius:999px;
+color:#bfa7ff;
+margin-bottom:20px;
+}
+h1{
+font-size:4rem;
+line-height:1.05;
+margin-bottom:20px;
+}
+.accent{color:#8b5cf6}
+.hero p{
+color:#bdbdbd;
+font-size:1.1rem;
+max-width:650px;
+}
+.btns{
+display:flex;
+gap:16px;
+margin-top:32px;
+flex-wrap:wrap;
+}
+.btn{
+padding:14px 24px;
+border-radius:14px;
+text-decoration:none;
+font-weight:600;
+}
+.primary{
+background:#8b5cf6;color:#fff;
+}
+.secondary{
+border:1px solid rgba(255,255,255,.2);
+color:#fff;
+}
+.profile{
+text-align:center;
+}
+.profile img{
+width:100%;
+max-width:420px;
+aspect-ratio:1/1;
+object-fit:cover;
+border-radius:24px;
+border:1px solid rgba(255,255,255,.08);
+}
+section{padding:80px 0}
+.section-title{
+font-size:2.3rem;
+margin-bottom:12px;
+}
+.section-sub{
+color:#a3a3a3;
+margin-bottom:40px;
+}
+.stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+}
+.card{
+background:#111;
+border:1px solid rgba(255,255,255,.08);
+padding:28px;
+border-radius:22px;
+}
+.stat-number{
+font-size:2rem;
+font-weight:800;
+color:#8b5cf6;
+}
+.services{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:20px;
+}
+.service{
+background:#111;
+padding:24px;
+border-radius:20px;
+border:1px solid rgba(255,255,255,.08);
+}
+.portfolio-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(500px,1fr));
+gap:28px;
+}
+.video-wrap{
+position:relative;
+padding-top:56.25%;
+overflow:hidden;
+border-radius:20px;
+}
+.video-wrap iframe{
+position:absolute;
+inset:0;
+width:100%;
+height:100%;
+border:0;
+}
+.contact-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+.contact-card{
+background:#111;
+padding:28px;
+border-radius:20px;
+border:1px solid rgba(255,255,255,.08);
+}
+.contact-card a{
+color:#8b5cf6;
+text-decoration:none;
+}
+footer{
+padding:30px 0;
+text-align:center;
+color:#888;
+border-top:1px solid rgba(255,255,255,.08);
+margin-top:60px;
+}
+@media(max-width:900px){
+.hero{grid-template-columns:1fr}
+h1{font-size:2.8rem}
+.stats,.contact-grid{grid-template-columns:1fr}
+.portfolio-grid{grid-template-columns:1fr}
+}
+</style>
 </head>
-<body class="font-sans antialiased flex flex-col min-h-screen selection:bg-white selection:text-black">
+<body>
 
-    <nav class="fixed top-0 z-50 w-full bg-darkBg/80 backdrop-blur-md border-b border-white/5 py-5 px-6 md:px-12 flex justify-between items-center">
-        <div class="font-display font-extrabold text-xl tracking-tighter uppercase">DB.</div>
-        <div class="hidden md:flex space-x-8 text-xs font-medium tracking-widest uppercase text-grayText">
-            <a href="#work" class="hover:text-white transition-colors">Selected Work</a>
-            <a href="#about" class="hover:text-white transition-colors">Philosophy</a>
-            <a href="#contact" class="hover:text-white transition-colors">Contact</a>
-        </div>
-        <a href="#contact" class="border border-white/20 text-xs uppercase tracking-widest px-4 py-2 hover:bg-white hover:text-black transition-all duration-300">
-            Let's Talk
-        </a>
-    </nav>
+<nav>
+<div class="container nav-wrap">
+<div class="logo">Diwash<span>VFX</span></div>
+<div class="nav-links">
+<a href="#portfolio">Portfolio</a>
+<a href="#services">Services</a>
+<a href="#contact">Contact</a>
+</div>
+</div>
+</nav>
 
-    <section class="relative pt-32 pb-20 px-6 md:px-12 min-h-[90vh] flex flex-col justify-center max-w-7xl mx-auto w-full">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div class="lg:col-span-7">
-                <span class="text-xs font-semibold uppercase tracking-[0.3em] text-grayText mb-4 block">POST-PRODUCTION WORKSHOP</span>
-                <h1 class="font-display text-5xl md:text-7xl font-extrabold tracking-tighter leading-none uppercase mb-6">
-                    CINEMATIC PACING.<br><span class="text-grayText">ELITE RETENTION.</span>
-                </h1>
-                <p class="text-grayText text-base md:text-lg leading-relaxed max-w-xl mb-8">
-                    I architect high-end post-production systems for premium creators and narrative podcasters. Moving past cheap visual clutter to build actual cinematic depth.
-                </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="#work" class="bg-white text-black px-6 py-4 text-xs font-semibold uppercase tracking-widest hover:bg-white/90 transition-colors">
-                        Explore Work ↓
-                    </a>
-                </div>
-            </div>
-            
-            <div class="lg:col-span-5 w-full aspect-video lg:aspect-square bg-surface border border-white/10 relative cursor-pointer overflow-hidden group video-glow" onclick="openVideoModal('YOUR_MAIN_REEL_ID', false)">
-                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" alt="Showreel placeholder" class="w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-700">
-                <div class="absolute inset-0 flex flex-col justify-between p-6">
-                    <span class="text-[10px] uppercase tracking-widest border border-white/20 w-max px-2 py-1 bg-black/40">2026 REEL</span>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center font-bold text-xs">▶</div>
-                        <div>
-                            <h4 class="font-display uppercase text-sm tracking-wider">Play Showreel</h4>
-                            <p class="text-xs text-grayText">2:14 Min</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="container hero">
+<div>
+<div class="badge">Short Form Video Editor</div>
+<h1>Short Form Edits Designed To Capture Attention & <span class="accent">Drive Results</span></h1>
+<p>
+I help creators, entrepreneurs and businesses turn their content into engaging, high-retention short form videos using Adobe After Effects and Premiere Pro.
+</p>
 
-    <section id="work" class="py-24 border-t border-white/5 bg-surface px-6 md:px-12 w-full">
-        <div class="max-w-7xl mx-auto">
-            <div class="mb-16">
-                <span class="text-xs font-semibold uppercase tracking-[0.3em] text-grayText mb-2 block">PORTFOLIO</span>
-                <h2 class="font-display text-4xl md:text-5xl font-extrabold uppercase tracking-tight">SELECTED PROJECTS</h2>
-            </div>
+<div class="btns">
+<a href="#portfolio" class="btn primary">View My Work</a>
+<a href="mailto:diwashbhattarai55@gmail.com" class="btn secondary">Email Me</a>
+</div>
+</div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                
-                <div class="group cursor-pointer" onclick="openVideoModal('YOUR_VIDEO_ID_1', false)">
-                    <div class="aspect-video w-full bg-darkBg border border-white/5 overflow-hidden relative mb-4 video-glow">
-                        <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=800&q=80" alt="Project 1" class="w-full h-full object-cover opacity-60 group-hover:scale-102 transition-transform duration-500">
-                        <div class="absolute bottom-4 left-4 bg-black/60 px-3 py-1 text-[10px] uppercase tracking-widest border border-white/10">Documentary</div>
-                    </div>
-                    <div class="flex justify-between items-start px-1">
-                        <div>
-                            <h3 class="font-display uppercase tracking-wide text-base group-hover:text-grayText transition-colors">The Cost of Perfection</h3>
-                            <p class="text-xs text-grayText mt-1">Full-scale narrative essay assembly, sound design, and color scoring.</p>
-                        </div>
-                        <span class="text-xs text-grayText uppercase">2026</span>
-                    </div>
-                </div>
+<div class="profile">
+<img src="image.png" alt="DiwashVFX">
+</div>
+</div>
 
-                <div class="group cursor-pointer" onclick="openVideoModal('YOUR_VIDEO_ID_2', true)">
-                    <div class="aspect-video w-full bg-darkBg border border-white/5 overflow-hidden relative mb-4 video-glow">
-                        <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=800&q=80" alt="Project 2" class="w-full h-full object-cover opacity-60 group-hover:scale-102 transition-transform duration-500">
-                        <div class="absolute bottom-4 left-4 bg-black/60 px-3 py-1 text-[10px] uppercase tracking-widest border border-white/10">Shortform / Vertical</div>
-                    </div>
-                    <div class="flex justify-between items-start px-1">
-                        <div>
-                            <h3 class="font-display uppercase tracking-wide text-base group-hover:text-grayText transition-colors">High-Retention Financial Breakdown</h3>
-                            <p class="text-xs text-grayText mt-1">Micro-documentary formatting optimized for vertical retention metrics.</p>
-                        </div>
-                        <span class="text-xs text-grayText uppercase">2026</span>
-                    </div>
-                </div>
+<section>
+<div class="container">
+<h2 class="section-title">Results That Matter</h2>
+<p class="section-sub">Focused on retention, storytelling and viewer attention.</p>
 
-            </div>
-        </div>
-    </section>
+<div class="stats">
+<div class="card">
+<div class="stat-number">100K+</div>
+<p>Views on short form edits</p>
+</div>
 
-    <section id="contact" class="py-32 px-6 md:px-12 w-full max-w-5xl mx-auto text-center border-t border-white/5">
-        <span class="text-xs font-semibold uppercase tracking-[0.3em] text-grayText mb-4 block">AVAILABILITY FOR Q3 2026</span>
-        <h2 class="font-display text-5xl md:text-7xl font-extrabold uppercase tracking-tighter mb-8 leading-none">LET'S BUILD<br>SOMETHING REAL.</h2>
-        <p class="text-grayText max-w-xl mx-auto text-sm md:text-base mb-12">
-            Taking on limited long-form documentary partnerships and high-tier content assets. If your editing strategy needs engineering, get in touch.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a href="mailto:onboardnomad@gmail.com" class="bg-white text-black text-xs uppercase tracking-widest font-semibold px-8 py-4 w-full sm:w-auto hover:bg-white/90 transition-colors">
-                onboardnomad@gmail.com
-            </a>
-            <a href="tel:+919242514015" class="border border-white/20 text-xs uppercase tracking-widest font-semibold px-8 py-4 w-full sm:w-auto hover:bg-white/10 transition-colors">
-                Call Direct
-            </a>
-        </div>
-    </section>
+<div class="card">
+<div class="stat-number">600K+</div>
+<p>Views on short form edits</p>
+</div>
 
-    <footer class="py-8 text-center border-t border-white/5 text-[10px] uppercase tracking-[0.2em] text-grayText">
-        &copy; Diwash Bhattarai. Engineered Post-Production.
-    </footer>
+<div class="card">
+<div class="stat-number">1 Year</div>
+<p>Professional editing experience</p>
+</div>
+</div>
+</div>
+</section>
 
-    <div id="videoModal" class="fixed inset-0 z-50 bg-black/95 hidden flex-col items-center justify-center p-4 backdrop-blur-md">
-        <button onclick="closeVideoModal()" class="absolute top-6 right-6 text-white/60 hover:text-white text-2xl font-light transition-colors focus:outline-none">✕ CLOSE</button>
-        <div class="w-full flex justify-center items-center h-full max-h-[85vh]">
-            <div id="iframeContainer" class="w-full bg-black shadow-2xl border border-white/10 mx-auto transition-all duration-300">
-                </div>
-        </div>
-    </div>
+<section id="services">
+<div class="container">
+<h2 class="section-title">Services</h2>
 
-    <script>
-        const modal = document.getElementById('videoModal');
-        const iframeContainer = document.getElementById('iframeContainer');
+<div class="services">
+<div class="service">Talking Head Editing</div>
+<div class="service">Business Content Editing</div>
+<div class="service">Captions & Subtitles</div>
+<div class="service">Sound Design</div>
+<div class="service">Motion Graphics</div>
+<div class="service">Visual Effects</div>
+<div class="service">Long Form To Shorts</div>
+<div class="service">Thumbnail Design</div>
+<div class="service">Content Repurposing</div>
+</div>
+</div>
+</section>
 
-        function openVideoModal(videoId, isVertical) {
-            iframeContainer.innerHTML = '';
-            
-            if (isVertical) {
-                iframeContainer.className = 'w-full max-w-[380px] aspect-[9/16] bg-black shadow-2xl border border-white/10 mx-auto';
-            } else {
-                iframeContainer.className = 'w-full max-w-5xl aspect-video bg-black shadow-2xl border border-white/10 mx-auto';
-            }
+<section id="portfolio">
+<div class="container">
+<h2 class="section-title">Featured Work</h2>
+<p class="section-sub">A selection of recent short form edits.</p>
 
-            const iframe = document.createElement('iframe');
-            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
-            iframe.className = 'w-full h-full border-0';
-            iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
-            iframe.setAttribute('allowfullscreen', 'true');
+<div class="portfolio-grid">
 
-            iframeContainer.appendChild(iframe);
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            document.body.style.overflow = 'hidden';
-        }
+<div class="video-wrap">
+<iframe src="https://www.youtube.com/embed/rtKTUSK5D9o" allowfullscreen></iframe>
+</div>
 
-        function closeVideoModal() {
-            iframeContainer.innerHTML = '';
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-            document.body.style.overflow = 'auto';
-        }
+<div class="video-wrap">
+<iframe src="https://www.youtube.com/embed/i6mqri4D47U" allowfullscreen></iframe>
+</div>
 
-        modal.addEventListener('click', (e) => { if (e.target === modal) closeVideoModal(); });
-        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeVideoModal(); });
-    </script>
+<div class="video-wrap">
+<iframe src="https://www.youtube.com/embed/rP7mrBMMwWE" allowfullscreen></iframe>
+</div>
+
+<div class="video-wrap">
+<iframe src="https://www.youtube.com/embed/OzXxgU1UiRY" allowfullscreen></iframe>
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="contact">
+<div class="container">
+<h2 class="section-title">Let's Work Together</h2>
+<p class="section-sub">Ready to create content that grabs attention and keeps viewers watching?</p>
+
+<div class="contact-grid">
+<div class="contact-card">
+<h3>Email</h3>
+<p><a href="mailto:diwashbhattarai55@gmail.com">diwashbhattarai55@gmail.com</a></p>
+</div>
+
+<div class="contact-card">
+<h3>WhatsApp</h3>
+<p><a href="https://wa.me/919242514015" target="_blank">+91 9242514015</a></p>
+</div>
+</div>
+</div>
+</section>
+
+<footer>
+© 2026 DiwashVFX. All Rights Reserved.
+</footer>
+
 </body>
 </html>
